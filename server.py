@@ -35,7 +35,7 @@ def clean_phone(phone_str):
 
 def generate_signature_html(data):
     salutation = (data.get("salutation") or DEFAULT_DATA["salutation"]).strip()
-    name = (data.get("name") or DEFAULT_DATA["name"]).strip()
+    name = (data.get("name") or DEFAULT_DATA["name"]).strip().upper()
     title = (data.get("title") or "").strip()
     position_vn = (data.get("position_vn") or data.get("position") or DEFAULT_DATA["position_vn"]).strip()
     position_en = (data.get("position_en") or DEFAULT_DATA["position_en"]).strip()
@@ -56,42 +56,42 @@ def generate_signature_html(data):
     name_display = name
     if title:
         title_clean = title if title.startswith('(') else f'({title})'
-        name_display = f'{name} <span style="font-weight: bold; font-size: 14px; color: #54381e;">{title_clean}</span>'
+        name_display = f'{name} <span style="font-weight: bold; font-size: 14px; color: #6e3d17;">{title_clean}</span>'
 
     position_parts = []
     if position_vn:
-        position_parts.append(f'<span style="font-style: italic; font-weight: bold; color: #54381e;">{position_vn}</span>')
+        position_parts.append(f'<span style="font-style: italic; font-weight: bold; color: #5D8C35;">{position_vn}</span>')
     if position_en:
-        position_parts.append(f'<span style="font-style: italic; font-weight: normal; color: #54381e;">{position_en}</span>')
+        position_parts.append(f'<span style="font-style: italic; font-weight: normal; color: #5D8C35;">{position_en}</span>')
     position_html = " | ".join(position_parts)
 
     company_parts = []
     if company_vn:
-        company_parts.append(f'<strong style="font-weight: bold; letter-spacing: 0.3px; color: #54381e;">{company_vn}</strong>')
+        company_parts.append(f'<strong style="font-weight: bold; letter-spacing: 0.3px; color: #6e3d17;">{company_vn}</strong>')
     if company_en:
-        company_parts.append(f'<span style="font-style: italic; color: #54381e;">{company_en}</span>')
+        company_parts.append(f'<span style="font-style: italic; color: #6e3d17;">{company_en}</span>')
     company_html = " | ".join(company_parts)
 
     contact_row1_parts = []
     if website:
-        contact_row1_parts.append(f'<strong style="color: #333333;">Website:</strong> <a href="{website_url}" target="_blank" style="color: #0b5cab; text-decoration: underline; font-family: \'Times New Roman\', Times, serif;">{website}</a>')
+        contact_row1_parts.append(f'<strong style="color: #5D8C35;">Website:</strong> <a href="{website_url}" target="_blank" style="color: #0b5cab; text-decoration: underline; font-family: \'Times New Roman\', Times, serif;">{website}</a>')
     if hotline:
-        contact_row1_parts.append(f'<strong style="color: #333333;">Hotline:</strong> <a href="tel:{hotline_clean}" style="color: #333333; text-decoration: none; font-family: \'Times New Roman\', Times, serif;">{hotline}</a>')
+        contact_row1_parts.append(f'<strong style="color: #5D8C35;">Hotline:</strong> <a href="tel:{hotline_clean}" style="color: #333333; text-decoration: none; font-family: \'Times New Roman\', Times, serif;">{hotline}</a>')
     contact_row1_html = " | ".join(contact_row1_parts)
 
     contact_row2_parts = []
     if mobile:
-        contact_row2_parts.append(f'<strong style="color: #333333;">Mobile:</strong> <a href="tel:{mobile_clean}" style="color: #333333; text-decoration: none; font-family: \'Times New Roman\', Times, serif;">{mobile}</a>')
+        contact_row2_parts.append(f'<strong style="color: #5D8C35;">Mobile:</strong> <a href="tel:{mobile_clean}" style="color: #333333; text-decoration: none; font-family: \'Times New Roman\', Times, serif;">{mobile}</a>')
     if email:
-        contact_row2_parts.append(f'<strong style="color: #333333;">Email:</strong> <a href="mailto:{email}" style="color: #0b5cab; text-decoration: underline; font-style: italic; font-family: \'Times New Roman\', Times, serif;">{email}</a>')
+        contact_row2_parts.append(f'<strong style="color: #5D8C35;">Email:</strong> <a href="mailto:{email}" style="color: #0b5cab; text-decoration: underline; font-style: italic; font-family: \'Times New Roman\', Times, serif;">{email}</a>')
     contact_row2_html = " | ".join(contact_row2_parts)
 
     html = f'''<div style="font-family: 'Times New Roman', Times, serif; font-size: 13px; color: #333333; line-height: 1.4;">
-  {f'<p style="font-family: \'Times New Roman\', Times, serif; font-size: 13px; font-style: italic; color: #333333; margin: 0 0 14px 0; padding: 0;">{salutation}</p>' if salutation else ''}
+  {f'<p style="font-family: \'Times New Roman\', Times, serif; font-size: 13.5px; font-style: italic; color: #333333; margin: 0 0 14px 0; padding: 0;">{salutation}</p>' if salutation else ''}
   <table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Times New Roman', Times, serif; font-size: 13px; line-height: 1.4; border-collapse: collapse;">
     <tr>
       <!-- CỘT 1: LOGO BILCO -->
-      <td valign="middle" align="center" style="padding: 0 18px 0 0; border-right: 1.5px solid #54381e; vertical-align: middle; text-align: center; width: 140px;">
+      <td valign="middle" align="center" style="padding: 0 18px 0 0; border-right: 1.5px solid #5D8C35; vertical-align: middle; text-align: center; width: 140px;">
         <a href="{website_url}" target="_blank" style="text-decoration: none; display: inline-block;">
           <img src="{logo_url}" alt="BILCO" width="130" style="display: block; border: 0; width: 130px; height: auto; max-width: 130px;" />
         </a>
@@ -102,17 +102,24 @@ def generate_signature_html(data):
         <!-- HỌ TÊN VÀ CHỨC DANH -->
         <table cellpadding="0" cellspacing="0" border="0">
           <tr>
-            <td style="font-family: 'Times New Roman', Times, serif; font-size: 15px; font-weight: bold; color: #54381e; line-height: 1.2;">
+            <td style="font-family: 'Times New Roman', Times, serif; font-size: 15px; font-weight: bold; color: #6e3d17; line-height: 1.2;">
               {name_display}
             </td>
           </tr>
-          {f'<tr><td style="font-family: \'Times New Roman\', Times, serif; font-size: 13px; color: #54381e; padding-top: 3px; padding-bottom: 10px; line-height: 1.2;">{position_html}</td></tr>' if position_html else ''}
+          {f'<tr><td style="font-family: \'Times New Roman\', Times, serif; font-size: 13px; color: #5D8C35; padding-top: 3px; padding-bottom: 8px; line-height: 1.2;">{position_html}</td></tr>' if position_html else ''}
+        </table>
+
+        <!-- ĐƯỜNG KẺ NGANG MẢNH PHÂN CÁCH -->
+        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+          <tr>
+            <td style="border-top: 1px solid #7c9860; font-size: 1px; line-height: 1px; height: 1px; padding-bottom: 8px;">&nbsp;</td>
+          </tr>
         </table>
 
         <!-- THÔNG TIN DOANH NGHIỆP & LIÊN HỆ -->
         <table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Times New Roman', Times, serif; font-size: 12px; color: #333333; line-height: 1.5;">
-          {f'<tr><td style="font-family: \'Times New Roman\', Times, serif; font-size: 13px; color: #54381e; padding-bottom: 4px;">{company_html}</td></tr>' if company_html else ''}
-          {f'<tr><td style="font-family: \'Times New Roman\', Times, serif; padding-bottom: 3px; color: #333333;"><strong style="color: #333333;">Địa chỉ/Address:</strong> <a href="{maps_url}" target="_blank" rel="noopener noreferrer" title="Xem trên Google Maps" style="color: #333333; text-decoration: none; font-style: italic; font-family: \'Times New Roman\', Times, serif;"><span style="color: #333333; text-decoration: none; font-style: italic;">{address}</span></a></td></tr>' if address else ''}
+          {f'<tr><td style="font-family: \'Times New Roman\', Times, serif; font-size: 13px; color: #6e3d17; padding-bottom: 4px;">{company_html}</td></tr>' if company_html else ''}
+          {f'<tr><td style="font-family: \'Times New Roman\', Times, serif; padding-bottom: 3px; color: #333333;"><strong style="color: #5D8C35;">Địa chỉ/Address:</strong> <a href="{maps_url}" target="_blank" rel="noopener noreferrer" title="Xem trên Google Maps" style="color: #333333; text-decoration: none; font-style: italic; font-family: \'Times New Roman\', Times, serif;"><span style="color: #333333; text-decoration: none; font-style: italic;">{address}</span></a></td></tr>' if address else ''}
           {f'<tr><td style="font-family: \'Times New Roman\', Times, serif; padding-bottom: 3px; color: #333333;">{contact_row1_html}</td></tr>' if contact_row1_html else ''}
           {f'<tr><td style="font-family: \'Times New Roman\', Times, serif; color: #333333;">{contact_row2_html}</td></tr>' if contact_row2_html else ''}
         </table>

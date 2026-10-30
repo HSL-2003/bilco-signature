@@ -1,9 +1,9 @@
 <div style="font-family: 'Times New Roman', Times, serif; font-size: 13px; color: #333333; line-height: 1.4;">
-  <p style="font-family: 'Times New Roman', Times, serif; font-size: 13px; font-style: italic; color: #333333; margin: 0 0 14px 0; padding: 0;">Trân trọng/Best Regards,</p>
+  <p style="font-family: 'Times New Roman', Times, serif; font-size: 13.5px; font-style: italic; color: #333333; margin: 0 0 14px 0; padding: 0;">Trân trọng/Best Regards,</p>
   <table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Times New Roman', Times, serif; font-size: 13px; line-height: 1.4; border-collapse: collapse;">
     <tr>
       <!-- CỘT 1: LOGO BILCO -->
-      <td valign="middle" align="center" style="padding: 0 18px 0 0; border-right: 1.5px solid #54381e; vertical-align: middle; text-align: center; width: 140px;">
+      <td valign="middle" align="center" style="padding: 0 18px 0 0; border-right: 1.5px solid #5D8C35; vertical-align: middle; text-align: center; width: 140px;">
         <a href="https://www.bilco.com.vn" target="_blank" style="text-decoration: none; display: inline-block;">
           <img src="https://cdn1.vieclam24h.vn/tvn/asset/home/img/employer/5789a286cf842_1468637830.png" alt="BILCO" width="130" style="display: block; border: 0; width: 130px; height: auto; max-width: 130px;" />
         </a>
@@ -14,19 +14,26 @@
         <!-- HỌ TÊN VÀ CHỨC DANH -->
         <table cellpadding="0" cellspacing="0" border="0">
           <tr>
-            <td style="font-family: 'Times New Roman', Times, serif; font-size: 15px; font-weight: bold; color: #54381e; line-height: 1.2;">
-              Trần Khánh Linh <span style="font-weight: bold; font-size: 14px; color: #54381e;">(Ms.)</span>
+            <td style="font-family: 'Times New Roman', Times, serif; font-size: 15px; font-weight: bold; color: #6e3d17; line-height: 1.2;">
+              TRẦN KHÁNH LINH <span style="font-weight: bold; font-size: 14px; color: #6e3d17;">(Ms.)</span>
             </td>
           </tr>
-          <tr><td style="font-family: 'Times New Roman', Times, serif; font-size: 13px; color: #54381e; padding-top: 3px; padding-bottom: 10px; line-height: 1.2;"><span style="font-style: italic; font-weight: bold; color: #54381e;">Trưởng phòng Cung ứng</span> | <span style="font-style: italic; font-weight: normal; color: #54381e;">Head of Procurement</span></td></tr>
+          <tr><td style="font-family: 'Times New Roman', Times, serif; font-size: 13px; color: #5D8C35; padding-top: 3px; padding-bottom: 8px; line-height: 1.2;"><span style="font-style: italic; font-weight: bold; color: #5D8C35;">Trưởng phòng Cung ứng</span> | <span style="font-style: italic; font-weight: normal; color: #5D8C35;">Head of Procurement</span></td></tr>
+        </table>
+
+        <!-- ĐƯỜNG KẺ NGANG MẢNH PHÂN CÁCH -->
+        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+          <tr>
+            <td style="border-top: 1px solid #7c9860; font-size: 1px; line-height: 1px; height: 1px; padding-bottom: 8px;">&nbsp;</td>
+          </tr>
         </table>
 
         <!-- THÔNG TIN DOANH NGHIỆP & LIÊN HỆ -->
         <table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Times New Roman', Times, serif; font-size: 12px; color: #333333; line-height: 1.5;">
-          <tr><td style="font-family: 'Times New Roman', Times, serif; font-size: 13px; color: #54381e; padding-bottom: 4px;"><strong style="font-weight: bold; letter-spacing: 0.3px; color: #54381e;">CÔNG TY CỔ PHẦN BILCO</strong> | <span style="font-style: italic; color: #54381e;">Bilco Joint Stock Company</span></td></tr>
-          <tr><td style="font-family: 'Times New Roman', Times, serif; padding-bottom: 3px; color: #333333;"><strong style="color: #333333;">Địa chỉ/Address:</strong> <a href="https://www.google.com/maps/search/?api=1&query=S%E1%BB%91+M1-25%2C+K%C4%90T+Vinhomes+Grand+Park%2C+%C4%90%C6%B0%E1%BB%9Dng+Ph%C6%B0%E1%BB%9Bc+Thi%E1%BB%87n%2C+Ph%C6%B0%E1%BB%9Dng+Long+B%C3%ACnh%2C+Th%C3%A0nh+ph%E1%BB%91+H%E1%BB%93+Ch%C3%AD+Minh%2C+Vi%E1%BB%87t+Nam." target="_blank" rel="noopener noreferrer" title="Xem trên Google Maps" style="color: #333333; text-decoration: none; font-style: italic; font-family: 'Times New Roman', Times, serif;"><span style="color: #333333; text-decoration: none; font-style: italic;">Số M1-25, KĐT Vinhomes Grand Park, Đường Phước Thiện, Phường Long Bình, Thành phố Hồ Chí Minh, Việt Nam.</span></a></td></tr>
-          <tr><td style="font-family: 'Times New Roman', Times, serif; padding-bottom: 3px; color: #333333;"><strong style="color: #333333;">Website:</strong> <a href="https://www.bilco.com.vn" target="_blank" style="color: #0b5cab; text-decoration: underline; font-family: 'Times New Roman', Times, serif;">www.bilco.com.vn</a> | <strong style="color: #333333;">Hotline:</strong> <a href="tel:+84933776388" style="color: #333333; text-decoration: none; font-family: 'Times New Roman', Times, serif;">+84 933 77 63 88</a></td></tr>
-          <tr><td style="font-family: 'Times New Roman', Times, serif; color: #333333;"><strong style="color: #333333;">Mobile:</strong> <a href="tel:+84934749191" style="color: #333333; text-decoration: none; font-family: 'Times New Roman', Times, serif;">+84 934 74 91 91</a> | <strong style="color: #333333;">Email:</strong> <a href="mailto:linhtk@bilco.com.vn" style="color: #0b5cab; text-decoration: underline; font-style: italic; font-family: 'Times New Roman', Times, serif;">linhtk@bilco.com.vn</a></td></tr>
+          <tr><td style="font-family: 'Times New Roman', Times, serif; font-size: 13px; color: #6e3d17; padding-bottom: 4px;"><strong style="font-weight: bold; letter-spacing: 0.3px; color: #6e3d17;">CÔNG TY CỔ PHẦN BILCO</strong> | <span style="font-style: italic; color: #6e3d17;">Bilco Joint Stock Company</span></td></tr>
+          <tr><td style="font-family: 'Times New Roman', Times, serif; padding-bottom: 3px; color: #333333;"><strong style="color: #5D8C35;">Địa chỉ/Address:</strong> <a href="https://www.google.com/maps/search/?api=1&query=S%E1%BB%91+M1-25%2C+K%C4%90T+Vinhomes+Grand+Park%2C+%C4%90%C6%B0%E1%BB%9Dng+Ph%C6%B0%E1%BB%9Bc+Thi%E1%BB%87n%2C+Ph%C6%B0%E1%BB%9Dng+Long+B%C3%ACnh%2C+Th%C3%A0nh+ph%E1%BB%91+H%E1%BB%93+Ch%C3%AD+Minh%2C+Vi%E1%BB%87t+Nam." target="_blank" rel="noopener noreferrer" title="Xem trên Google Maps" style="color: #333333; text-decoration: none; font-style: italic; font-family: 'Times New Roman', Times, serif;"><span style="color: #333333; text-decoration: none; font-style: italic;">Số M1-25, KĐT Vinhomes Grand Park, Đường Phước Thiện, Phường Long Bình, Thành phố Hồ Chí Minh, Việt Nam.</span></a></td></tr>
+          <tr><td style="font-family: 'Times New Roman', Times, serif; padding-bottom: 3px; color: #333333;"><strong style="color: #5D8C35;">Website:</strong> <a href="https://www.bilco.com.vn" target="_blank" style="color: #0b5cab; text-decoration: underline; font-family: 'Times New Roman', Times, serif;">www.bilco.com.vn</a> | <strong style="color: #5D8C35;">Hotline:</strong> <a href="tel:+84933776388" style="color: #333333; text-decoration: none; font-family: 'Times New Roman', Times, serif;">+84 933 77 63 88</a></td></tr>
+          <tr><td style="font-family: 'Times New Roman', Times, serif; color: #333333;"><strong style="color: #5D8C35;">Mobile:</strong> <a href="tel:+84934749191" style="color: #333333; text-decoration: none; font-family: 'Times New Roman', Times, serif;">+84 934 74 91 91</a> | <strong style="color: #5D8C35;">Email:</strong> <a href="mailto:linhtk@bilco.com.vn" style="color: #0b5cab; text-decoration: underline; font-style: italic; font-family: 'Times New Roman', Times, serif;">linhtk@bilco.com.vn</a></td></tr>
         </table>
       </td>
     </tr>

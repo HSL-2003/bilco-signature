@@ -12,8 +12,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #54381e;
-            --primary-hover: #3d2714;
+            --primary: #9c5123ff;
+            --primary-hover: #3f210aff;
             --accent: #5D8C35;
             --bg: #f5f6f8;
             --card-bg: #ffffff;
@@ -420,7 +420,7 @@
 
             <!-- BƯỚC 2: HIỆN MÃ QR -->
             <div id="donateStep2" style="display: none;">
-                <h3 style="font-size: 18px; font-weight: 700; color: #54381e; margin-bottom: 8px;">Sơn thủy hữu tương phùng,Cảm ơn đại thiện nhân &lt;3</h3>
+                <h3 style="font-size: 18px; font-weight: 700; color: #2b1b10; margin-bottom: 8px;">Sơn thủy hữu tương phùng,Cảm ơn đại thiện nhân &lt;3</h3>
                 <p style="font-size: 13px; color: #718096; margin-bottom: 14px;">Vietcombank - LAM HOANG SON - 9899901359</p>
                 <div style="background: #fff; padding: 4px; border-radius: 12px; display: inline-block; box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-bottom: 16px;">
                     <img src="qr-donate.jpg" alt="Mã QR Vietcombank" style="max-width: 100%; max-height: 380px; border-radius: 8px; display: block;">
@@ -464,7 +464,8 @@
         // Tạo chuỗi HTML chữ ký chuẩn 100% cho Outlook từ Object dữ liệu
         function generateSignatureHTML(data) {
             const salutation = (data.salutation || DEFAULT_CONFIG.salutation).trim();
-            const name = (data.name || DEFAULT_CONFIG.name).trim();
+            const raw_name = (data.name || DEFAULT_CONFIG.name).trim();
+            const name = raw_name.toUpperCase();
             const title = (data.title || '').trim();
             const position_vn = (data.position_vn || DEFAULT_CONFIG.position_vn).trim();
             const position_en = (data.position_en || DEFAULT_CONFIG.position_en).trim();
@@ -482,43 +483,43 @@
             const mobile_clean = cleanPhone(mobile);
             const maps_url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
 
-            // Họ tên + Danh xưng
+            // Họ tên IN HOA + Danh xưng
             let name_display = name;
             if (title) {
                 const title_clean = title.startsWith('(') ? title : `(${title})`;
-                name_display = `${name} <span style="font-weight: bold; font-size: 14px; color: #54381e;">${title_clean}</span>`;
+                name_display = `${name} <span style="font-weight: bold; font-size: 14px; color: #6e3d17;">${title_clean}</span>`;
             }
 
-            // Chức vụ VN & EN
+            // Chức vụ VN & EN màu xanh rêu #5D8C35 in nghiêng
             const posParts = [];
-            if (position_vn) posParts.push(`<span style="font-style: italic; font-weight: bold; color: #54381e;">${position_vn}</span>`);
-            if (position_en) posParts.push(`<span style="font-style: italic; font-weight: normal; color: #54381e;">${position_en}</span>`);
+            if (position_vn) posParts.push(`<span style="font-style: italic; font-weight: bold; color: #5D8C35;">${position_vn}</span>`);
+            if (position_en) posParts.push(`<span style="font-style: italic; font-weight: normal; color: #5D8C35;">${position_en}</span>`);
             const posHtml = posParts.join(' | ');
 
-            // Công ty VN & EN
+            // Công ty VN & EN màu nâu sáng #6e3d17
             const compParts = [];
-            if (company_vn) compParts.push(`<strong style="font-weight: bold; letter-spacing: 0.3px; color: #54381e;">${company_vn}</strong>`);
-            if (company_en) compParts.push(`<span style="font-style: italic; color: #54381e;">${company_en}</span>`);
+            if (company_vn) compParts.push(`<strong style="font-weight: bold; letter-spacing: 0.3px; color: #6e3d17;">${company_vn}</strong>`);
+            if (company_en) compParts.push(`<span style="font-style: italic; color: #6e3d17;">${company_en}</span>`);
             const compHtml = compParts.join(' | ');
 
-            // Website & Hotline
+            // Website & Hotline (nhãn màu xanh #5D8C35)
             const contact1 = [];
-            if (website) contact1.push(`<strong style="color: #333333;">Website:</strong> <a href="${website_url}" target="_blank" style="color: #0b5cab; text-decoration: underline; font-family: 'Times New Roman', Times, serif;">${website}</a>`);
-            if (hotline) contact1.push(`<strong style="color: #333333;">Hotline:</strong> <a href="tel:${hotline_clean}" style="color: #333333; text-decoration: none; font-family: 'Times New Roman', Times, serif;">${hotline}</a>`);
+            if (website) contact1.push(`<strong style="color: #5D8C35;">Website:</strong> <a href="${website_url}" target="_blank" style="color: #0b5cab; text-decoration: underline; font-family: 'Times New Roman', Times, serif;">${website}</a>`);
+            if (hotline) contact1.push(`<strong style="color: #5D8C35;">Hotline:</strong> <a href="tel:${hotline_clean}" style="color: #6e3d17; text-decoration: none; font-family: 'Times New Roman', Times, serif;">${hotline}</a>`);
             const contact1Html = contact1.join(' | ');
 
-            // Mobile & Email
+            // Mobile & Email (nhãn màu xanh #5D8C35)
             const contact2 = [];
-            if (mobile) contact2.push(`<strong style="color: #333333;">Mobile:</strong> <a href="tel:${mobile_clean}" style="color: #333333; text-decoration: none; font-family: 'Times New Roman', Times, serif;">${mobile}</a>`);
-            if (email) contact2.push(`<strong style="color: #333333;">Email:</strong> <a href="mailto:${email}" style="color: #0b5cab; text-decoration: underline; font-style: italic; font-family: 'Times New Roman', Times, serif;">${email}</a>`);
+            if (mobile) contact2.push(`<strong style="color: #5D8C35;">Mobile:</strong> <a href="tel:${mobile_clean}" style="color: #6e3d17; text-decoration: none; font-family: 'Times New Roman', Times, serif;">${mobile}</a>`);
+            if (email) contact2.push(`<strong style="color: #5D8C35;">Email:</strong> <a href="mailto:${email}" style="color: #0b5cab; text-decoration: underline; font-style: italic; font-family: 'Times New Roman', Times, serif;">${email}</a>`);
             const contact2Html = contact2.join(' | ');
 
             return `<div style="font-family: 'Times New Roman', Times, serif; font-size: 13px; color: #333333; line-height: 1.4;">
-  ${salutation ? `<p style="font-family: 'Times New Roman', Times, serif; font-size: 13px; font-style: italic; color: #333333; margin: 0 0 14px 0; padding: 0;">${salutation}</p>` : ''}
+  ${salutation ? `<p style="font-family: 'Times New Roman', Times, serif; font-size: 13.5px; font-style: italic; color: #333333; margin: 0 0 14px 0; padding: 0;">${salutation}</p>` : ''}
   <table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Times New Roman', Times, serif; font-size: 13px; line-height: 1.4; border-collapse: collapse;">
     <tr>
       <!-- CỘT 1: LOGO BILCO -->
-      <td valign="middle" align="center" style="padding: 0 18px 0 0; border-right: 1.5px solid #54381e; vertical-align: middle; text-align: center; width: 140px;">
+      <td valign="middle" align="center" style="padding: 0 18px 0 0; border-right: 1.5px solid #5D8C35; vertical-align: middle; text-align: center; width: 140px;">
         <a href="${website_url}" target="_blank" style="text-decoration: none; display: inline-block;">
           <img src="${logo_url}" alt="BILCO" width="130" style="display: block; border: 0; width: 130px; height: auto; max-width: 130px;" />
         </a>
@@ -529,19 +530,26 @@
         <!-- HỌ TÊN VÀ CHỨC DANH -->
         <table cellpadding="0" cellspacing="0" border="0">
           <tr>
-            <td style="font-family: 'Times New Roman', Times, serif; font-size: 15px; font-weight: bold; color: #54381e; line-height: 1.2;">
+            <td style="font-family: 'Times New Roman', Times, serif; font-size: 15px; font-weight: bold; color: #6e3d17; line-height: 1.2;">
               ${name_display}
             </td>
           </tr>
-          ${posHtml ? `<tr><td style="font-family: 'Times New Roman', Times, serif; font-size: 13px; color: #54381e; padding-top: 3px; padding-bottom: 10px; line-height: 1.2;">${posHtml}</td></tr>` : ''}
+          ${posHtml ? `<tr><td style="font-family: 'Times New Roman', Times, serif; font-size: 13px; color: #5D8C35; padding-top: 3px; padding-bottom: 8px; line-height: 1.2;">${posHtml}</td></tr>` : ''}
+        </table>
+
+        <!-- ĐƯỜNG KẺ NGANG MẢNH PHÂN CÁCH -->
+        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+          <tr>
+            <td style="border-top: 1px solid #7c9860; font-size: 1px; line-height: 1px; height: 1px; padding-bottom: 8px;">&nbsp;</td>
+          </tr>
         </table>
 
         <!-- THÔNG TIN DOANH NGHIỆP & LIÊN HỆ -->
         <table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Times New Roman', Times, serif; font-size: 12px; color: #333333; line-height: 1.5;">
-          ${compHtml ? `<tr><td style="font-family: 'Times New Roman', Times, serif; font-size: 13px; color: #54381e; padding-bottom: 4px;">${compHtml}</td></tr>` : ''}
-          ${address ? `<tr><td style="font-family: 'Times New Roman', Times, serif; padding-bottom: 3px; color: #333333;"><strong style="color: #333333;">Địa chỉ/Address:</strong> <a href="${maps_url}" target="_blank" rel="noopener noreferrer" title="Xem trên Google Maps" style="color: #333333; text-decoration: none; font-style: italic; font-family: 'Times New Roman', Times, serif;"><span style="color: #333333; text-decoration: none; font-style: italic;">${address}</span></a></td></tr>` : ''}
-          ${contact1Html ? `<tr><td style="font-family: 'Times New Roman', Times, serif; padding-bottom: 3px; color: #333333;">${contact1Html}</td></tr>` : ''}
-          ${contact2Html ? `<tr><td style="font-family: 'Times New Roman', Times, serif; color: #333333;">${contact2Html}</td></tr>` : ''}
+          ${compHtml ? `<tr><td style="font-family: 'Times New Roman', Times, serif; font-size: 13px; color: #6e3d17; padding-bottom: 4px;">${compHtml}</td></tr>` : ''}
+          ${address ? `<tr><td style="font-family: 'Times New Roman', Times, serif; padding-bottom: 3px; color: #6e3d17;"><strong style="color: #5D8C35;">Địa chỉ/Address:</strong> <a href="${maps_url}" target="_blank" rel="noopener noreferrer" title="Xem trên Google Maps" style="color: #333333; text-decoration: none; font-style: italic; font-family: 'Times New Roman', Times, serif;"><span style="color: #6e3d17; text-decoration: none; font-style: italic;">${address}</span></a></td></tr>` : ''}
+          ${contact1Html ? `<tr><td style="font-family: 'Times New Roman', Times, serif; padding-bottom: 3px; color: #6e3d17;">${contact1Html}</td></tr>` : ''}
+          ${contact2Html ? `<tr><td style="font-family: 'Times New Roman', Times, serif; color: #6e3d17;">${contact2Html}</td></tr>` : ''}
         </table>
       </td>
     </tr>
