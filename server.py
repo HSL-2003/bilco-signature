@@ -132,13 +132,14 @@ class SignatureHandler(http.server.BaseHTTPRequestHandler):
             file_to_open = "index.html" if os.path.exists("index.html") else "signature-editor.html"
             with open(file_to_open, "r", encoding="utf-8") as f:
                 self.wfile.write(f.read().encode("utf-8"))
-        elif clean_path in ("/favicon.ico", "/favicon.png"):
-            fav_file = "favicon.ico" if clean_path == "/favicon.ico" else "favicon.png"
-            if os.path.exists(fav_file):
+        elif clean_path in ("/favicon.ico", "/favicon.png", "/qr-donate.jpg"):
+            target_path = clean_path.lstrip("/")
+            if os.path.exists(target_path):
                 self.send_response(200)
-                self.send_header("Content-type", "image/png" if fav_file.endswith(".png") else "image/x-icon")
+                content_type = "image/jpeg" if target_path.endswith((".jpg", ".jpeg")) else ("image/png" if target_path.endswith(".png") else "image/x-icon")
+                self.send_header("Content-type", content_type)
                 self.end_headers()
-                with open(fav_file, "rb") as f:
+                with open(target_path, "rb") as f:
                     self.wfile.write(f.read())
             else:
                 self.send_error(404, "Not found")

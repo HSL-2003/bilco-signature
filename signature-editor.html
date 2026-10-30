@@ -235,6 +235,35 @@
         .toast.success { background: #2f855a; color: white; }
         .toast.error { background: #c53030; color: white; }
         .toast.info { background: #2b5797; color: white; }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            backdrop-filter: blur(4px);
+            padding: 20px;
+        }
+        .modal-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 28px 24px;
+            width: 100%;
+            max-width: 380px;
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.25), 0 10px 10px -5px rgba(0,0,0,0.1);
+            text-align: center;
+            animation: modalFadeIn .2s ease-out;
+        }
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
     </style>
 </head>
 <body>
@@ -369,6 +398,41 @@
     </div>
 
     <div class="toast" id="toast"></div>
+
+    <!-- POPUP DONATE IT -->
+    <div id="donateModal" class="modal-overlay" style="display: none;">
+        <div class="modal-card">
+            <!-- BƯỚC 1: HỎI Ý KIẾN -->
+            <div id="donateStep1">
+                <h3 style="font-size: 17px; font-weight: 700; color: #2d3748; margin-bottom: 14px;">Ủng hộ nhân viên IT</h3>
+                <p style="font-size: 14.5px; color: #4a5568; line-height: 1.6; margin-bottom: 24px;">
+                    Tích tiểu thành đại, bạn có muốn ủng hộ nhân viên IT không?
+                </p>
+                <div style="display: flex; gap: 12px; justify-content: center;">
+                    <button type="button" class="btn btn-primary" onclick="showDonateQR()" style="padding: 10px 24px; font-size: 14px;">
+                        Có
+                    </button>
+                    <button type="button" class="btn btn-secondary" onclick="closeDonateModal()" style="padding: 10px 24px; font-size: 14px;">
+                        Không
+                    </button>
+                </div>
+            </div>
+
+            <!-- BƯỚC 2: HIỆN MÃ QR -->
+            <div id="donateStep2" style="display: none;">
+                <h3 style="font-size: 18px; font-weight: 700; color: #54381e; margin-bottom: 8px;">Cảm ơn đại thiện nhân &lt;3</h3>
+                <p style="font-size: 13px; color: #718096; margin-bottom: 14px;">Vietcombank - LAM HOANG SON - 9899901359</p>
+                <div style="background: #fff; padding: 4px; border-radius: 12px; display: inline-block; box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-bottom: 16px;">
+                    <img src="qr-donate.jpg" alt="Mã QR Vietcombank" style="max-width: 100%; max-height: 380px; border-radius: 8px; display: block;">
+                </div>
+                <div>
+                    <button type="button" class="btn btn-secondary" onclick="closeDonateModal()" style="padding: 8px 24px; font-size: 13.5px; width: 100%;">
+                        Đóng
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script>
         const form = document.getElementById('signatureForm');
@@ -563,7 +627,39 @@
                 fallbackSelectCopy();
                 showToast('info', 'Đã sao chép! Mở Outlook và nhấn Ctrl + V để dán.');
             }
+
+            // Mở popup hỏi ủng hộ
+            setTimeout(() => {
+                openDonateModal();
+            }, 500);
         }
+
+        const donateModal = document.getElementById('donateModal');
+        const donateStep1 = document.getElementById('donateStep1');
+        const donateStep2 = document.getElementById('donateStep2');
+
+        function openDonateModal() {
+            donateStep1.style.display = 'block';
+            donateStep2.style.display = 'none';
+            donateModal.style.display = 'flex';
+        }
+
+        function showDonateQR() {
+            donateStep1.style.display = 'none';
+            donateStep2.style.display = 'block';
+        }
+
+        function closeDonateModal() {
+            donateModal.style.display = 'none';
+        }
+
+        donateModal.addEventListener('click', (e) => {
+            if (e.target === donateModal) closeDonateModal();
+        });
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeDonateModal();
+        });
 
         function fallbackSelectCopy() {
             const selection = window.getSelection();
