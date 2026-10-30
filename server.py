@@ -52,13 +52,11 @@ def generate_signature_html(data):
     hotline_clean = clean_phone(hotline)
     mobile_clean = clean_phone(mobile)
 
-    # Ghép danh xưng nếu có
     name_display = name
     if title:
         title_clean = title if title.startswith('(') else f'({title})'
         name_display = f'{name} <span style="font-weight: bold; font-size: 14px; color: #54381e;">{title_clean}</span>'
 
-    # Ghép chức vụ VN và EN
     position_parts = []
     if position_vn:
         position_parts.append(f'<span style="font-style: italic; font-weight: bold; color: #54381e;">{position_vn}</span>')
@@ -66,7 +64,6 @@ def generate_signature_html(data):
         position_parts.append(f'<span style="font-style: italic; font-weight: normal; color: #54381e;">{position_en}</span>')
     position_html = " | ".join(position_parts)
 
-    # Ghép công ty VN và EN
     company_parts = []
     if company_vn:
         company_parts.append(f'<strong style="font-weight: bold; letter-spacing: 0.3px; color: #54381e;">{company_vn}</strong>')
@@ -74,7 +71,6 @@ def generate_signature_html(data):
         company_parts.append(f'<span style="font-style: italic; color: #54381e;">{company_en}</span>')
     company_html = " | ".join(company_parts)
 
-    # Ghép Website & Hotline
     contact_row1_parts = []
     if website:
         contact_row1_parts.append(f'<strong style="color: #333333;">Website:</strong> <a href="{website_url}" target="_blank" style="color: #0b5cab; text-decoration: underline; font-family: \'Times New Roman\', Times, serif;">{website}</a>')
@@ -82,7 +78,6 @@ def generate_signature_html(data):
         contact_row1_parts.append(f'<strong style="color: #333333;">Hotline:</strong> <a href="tel:{hotline_clean}" style="color: #333333; text-decoration: none; font-family: \'Times New Roman\', Times, serif;">{hotline}</a>')
     contact_row1_html = " | ".join(contact_row1_parts)
 
-    # Ghép Mobile & Email
     contact_row2_parts = []
     if mobile:
         contact_row2_parts.append(f'<strong style="color: #333333;">Mobile:</strong> <a href="tel:{mobile_clean}" style="color: #333333; text-decoration: none; font-family: \'Times New Roman\', Times, serif;">{mobile}</a>')
@@ -90,7 +85,6 @@ def generate_signature_html(data):
         contact_row2_parts.append(f'<strong style="color: #333333;">Email:</strong> <a href="mailto:{email}" style="color: #0b5cab; text-decoration: underline; font-style: italic; font-family: \'Times New Roman\', Times, serif;">{email}</a>')
     contact_row2_html = " | ".join(contact_row2_parts)
 
-    # Template HTML chuẩn cho Outlook & webmail
     html = f'''<div style="font-family: 'Times New Roman', Times, serif; font-size: 13px; color: #333333; line-height: 1.4;">
   {f'<p style="font-family: \'Times New Roman\', Times, serif; font-size: 13px; font-style: italic; color: #333333; margin: 0 0 14px 0; padding: 0;">{salutation}</p>' if salutation else ''}
   <table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Times New Roman', Times, serif; font-size: 13px; line-height: 1.4; border-collapse: collapse;">
@@ -137,6 +131,16 @@ class SignatureHandler(http.server.BaseHTTPRequestHandler):
             file_to_open = "index.html" if os.path.exists("index.html") else "signature-editor.html"
             with open(file_to_open, "r", encoding="utf-8") as f:
                 self.wfile.write(f.read().encode("utf-8"))
+        elif clean_path in ("/favicon.ico", "/favicon.png"):
+            fav_file = "favicon.ico" if clean_path == "/favicon.ico" else "favicon.png"
+            if os.path.exists(fav_file):
+                self.send_response(200)
+                self.send_header("Content-type", "image/png" if fav_file.endswith(".png") else "image/x-icon")
+                self.end_headers()
+                with open(fav_file, "rb") as f:
+                    self.wfile.write(f.read())
+            else:
+                self.send_error(404, "Not found")
         elif clean_path == "/api/signature":
             self.send_response(200)
             self.send_header("Content-type", "text/html; charset=utf-8")
@@ -171,15 +175,12 @@ class SignatureHandler(http.server.BaseHTTPRequestHandler):
                 data = json.loads(body.decode("utf-8"))
                 sig_html = generate_signature_html(data)
                 
-                # Lưu file đích HTML
                 with open(TARGET_FILE, "w", encoding="utf-8") as f:
                     f.write(sig_html)
                 
-                # Lưu file JSON trạng thái
                 with open(DATA_FILE, "w", encoding="utf-8") as f:
                     json.dump(data, f, ensure_ascii=False, indent=2)
 
-                # Tạo bản sao lưu
                 shutil.copy2(TARGET_FILE, BACKUP_FILE)
                 
                 self.send_response(200)
@@ -195,7 +196,6 @@ class SignatureHandler(http.server.BaseHTTPRequestHandler):
             self.send_error(404, "Not found")
 
 if __name__ == "__main__":
-    # Khởi tạo file TARGET_FILE ban đầu nếu chưa có hoặc đang là file cũ
     if not os.path.exists(TARGET_FILE) or not os.path.exists(DATA_FILE):
         with open(TARGET_FILE, "w", encoding="utf-8") as f:
             f.write(generate_signature_html(DEFAULT_DATA))
