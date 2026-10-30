@@ -51,6 +51,7 @@ def generate_signature_html(data):
     website_url = website if website.startswith(('http://', 'https://')) else f'https://{website}'
     hotline_clean = clean_phone(hotline)
     mobile_clean = clean_phone(mobile)
+    maps_url = f"https://www.google.com/maps/search/?api=1&query={urllib.parse.quote_plus(address)}"
 
     name_display = name
     if title:
@@ -111,7 +112,7 @@ def generate_signature_html(data):
         <!-- THÔNG TIN DOANH NGHIỆP & LIÊN HỆ -->
         <table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Times New Roman', Times, serif; font-size: 12px; color: #333333; line-height: 1.5;">
           {f'<tr><td style="font-family: \'Times New Roman\', Times, serif; font-size: 13px; color: #54381e; padding-bottom: 4px;">{company_html}</td></tr>' if company_html else ''}
-          {f'<tr><td style="font-family: \'Times New Roman\', Times, serif; padding-bottom: 3px; color: #333333;"><strong style="color: #333333;">Địa chỉ/Address:</strong> <span style="font-style: italic;">{address}</span></td></tr>' if address else ''}
+          {f'<tr><td style="font-family: \'Times New Roman\', Times, serif; padding-bottom: 3px; color: #333333;"><strong style="color: #333333;">Địa chỉ/Address:</strong> <a href="{maps_url}" target="_blank" rel="noopener noreferrer" title="Xem trên Google Maps" style="color: #333333; text-decoration: none; font-style: italic; font-family: \'Times New Roman\', Times, serif;"><span style="color: #333333; text-decoration: none; font-style: italic;">{address}</span></a></td></tr>' if address else ''}
           {f'<tr><td style="font-family: \'Times New Roman\', Times, serif; padding-bottom: 3px; color: #333333;">{contact_row1_html}</td></tr>' if contact_row1_html else ''}
           {f'<tr><td style="font-family: \'Times New Roman\', Times, serif; color: #333333;">{contact_row2_html}</td></tr>' if contact_row2_html else ''}
         </table>

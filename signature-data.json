@@ -1,15 +1,15 @@
 {
-  "salutation": "Trân trọng/Best Regards,",
-  "name": "Lam Hoang Son",
-  "title": "(Mr.)",
-  "position_vn": "Nhân Viên IT",
-  "position_en": "IT Staff",
-  "company_vn": "CÔNG TY CỔ PHẦN BILCO",
-  "company_en": "Bilco Joint Stock Company",
-  "address": "288 Nguyen Thi Minh Khai,Quy Nhon Nam,Gia Lai,Viet Nam",
   "website": "www.bilco.com.vn",
+  "logo_url": "https://cdn1.vieclam24h.vn/tvn/asset/home/img/employer/5789a286cf842_1468637830.png",
+  "salutation": "Trân trọng/Best Regards,",
+  "company_en": "Bilco Joint Stock Company",
   "hotline": "+84 933 77 63 88",
-  "mobile": "+84 999999",
-  "email": "sonlhqe170231@fpt.edu.vn",
-  "logo_url": "https://cdn1.vieclam24h.vn/tvn/asset/home/img/employer/5789a286cf842_1468637830.png"
+  "title": "(Ms.)",
+  "position_vn": "Trưởng phòng Cung ứng",
+  "name": "Trần Khánh Linh",
+  "company_vn": "CÔNG TY CỔ PHẦN BILCO",
+  "mobile": "+84 934 74 91 91",
+  "position_en": "Head of Procurement",
+  "email": "linhtk@bilco.com.vn",
+  "address": "Số M1-25, KĐT Vinhomes Grand Park, Đường Phước Thiện, Phường Long Bình, Thành phố Hồ Chí Minh, Việt Nam."
 }
