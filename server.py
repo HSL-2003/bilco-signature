@@ -22,7 +22,7 @@ DEFAULT_DATA = {
     "company_en": "Bilco Joint Stock Company",
     "address": "Số M1-25, KĐT Vinhomes Grand Park, Đường Phước Thiện, Phường Long Bình, Thành phố Hồ Chí Minh, Việt Nam.",
     "website": "www.bilco.com.vn",
-    "hotline": "+84 933 77 63 88",
+    "hotline": "+84 28 3911 2229",
     "mobile": "+84 934 74 91 91",
     "email": "linhtk@bilco.com.vn",
     "logo_url": "https://i.pinimg.com/236x/4b/8f/26/4b8f265201569bbcf13f76127a5c0277.jpg"
