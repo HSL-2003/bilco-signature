@@ -147,7 +147,7 @@
             border-top: 1px solid var(--border);
         }
         .btn {
-            padding: 10px 18px;
+            padding: 10px 16px;
             border: none;
             border-radius: 7px;
             font-family: inherit;
@@ -158,27 +158,39 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            text-align: center;
         }
         .btn-primary {
             background: var(--primary);
             color: white;
             flex: 1;
+            min-width: 140px;
         }
         .btn-primary:hover {
             background: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+        .btn-install {
+            background: #2b5797;
+            color: white;
+            flex: 1.2;
+            min-width: 190px;
+        }
+        .btn-install:hover {
+            background: #1e3f6f;
             transform: translateY(-1px);
         }
         .btn-secondary {
             background: #f7fafc;
             color: var(--text-main);
             border: 1px solid var(--border);
+            min-width: 110px;
         }
         .btn-secondary:hover {
             background: #edf2f7;
         }
         .btn-copy {
-            background: #2b5797; /* Outlook Blue */
+            background: #2b5797;
             color: white;
             width: 100%;
             padding: 13px 18px;
@@ -270,9 +282,9 @@
     <div class="header">
         <div>
             <h1>Bộ Tạo Chữ Ký Email Bilco</h1>
-            <p>Nhập thông tin, xem trước tức thì và dán vào Microsoft Outlook / Webmail chuẩn 100%</p>
+            <p>Nhập thông tin, xem trước tức thì và đồng bộ vào Microsoft Outlook chuẩn 100%</p>
         </div>
-        <span class="badge">⚡ Live Preview & Outlook Compatible</span>
+        <span class="badge">Live Preview &amp; Outlook Compatible</span>
     </div>
 
     <div class="app-layout">
@@ -280,7 +292,7 @@
         <div class="card">
             <div class="card-title">
                 <span>Nhập Thông Tin Chữ Ký</span>
-                <button type="button" class="btn btn-secondary" style="padding: 4px 10px; font-size: 12px;" onclick="resetToDefault()">Mẫu mặc định</button>
+                <button type="button" class="btn btn-secondary" style="padding: 4px 10px; font-size: 12px; min-width: auto;" onclick="resetToDefault()">Mẫu mặc định</button>
             </div>
 
             <form id="signatureForm">
@@ -338,7 +350,7 @@
                     </div>
                     <div class="form-group">
                         <label for="hotline">Hotline</label>
-                        <input type="text" id="hotline" placeholder="+84 933 77 63 88">
+                        <input type="text" id="hotline" placeholder="+84 28 3911 2229">
                     </div>
                 </div>
 
@@ -360,11 +372,12 @@
 
                 <div class="btn-group">
                     <button type="submit" class="btn btn-primary" id="btnSubmit">
-                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M11 2H9v3h2z"/><path d="M1.5 0A1.5 1.5 0 0 0 0 1.5v13A1.5 1.5 0 0 0 1.5 16h13a1.5 1.5 0 0 0 1.5-1.5V4.414a1.5 1.5 0 0 0-.44-1.06L12.646.439A1.5 1.5 0 0 0 11.586 0zm11 1.5 2 2V14.5a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 .5-.5H3v4a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1z"/></svg>
                         Lưu thông tin cá nhân
                     </button>
+                    <button type="button" class="btn btn-install" onclick="downloadOneClickInstaller()">
+                        Cài đặt Outlook (1-Click .BAT)
+                    </button>
                     <button type="button" class="btn btn-secondary" onclick="downloadHtmlFile()">
-                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/></svg>
                         Tải file .HTM
                     </button>
                 </div>
@@ -383,50 +396,45 @@
             </div>
 
             <button type="button" class="btn btn-copy" onclick="copySignatureForOutlook()">
-                <svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16"><path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1z"/><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0z"/></svg>
-                Sao Chép Chữ Ký 
+                Sao Chép Chữ Ký
             </button>
 
             <div class="outlook-tip">
-                <strong>💡 Cách dán vào Outlook trong 10 giây:</strong>
-                1. Bấm nút màu xanh <b>"Sao Chép Chữ Ký"</b> ở trên.<br>
-                2. Mở <b>Outlook</b> &gt; Vào <b>File &gt; Options &gt; Mail &gt; Signatures...</b><br>
-                3. Tạo chữ ký mới, đặt con trỏ chuột vào khung soạn thảo và nhấn <b>Ctrl + V</b>.<br>
-                4. Nhấn <b>OK</b>. Bố cục, logo, liên kết và màu sắc giữ nguyên 100%!
+                <strong>Hướng dẫn cài đặt chữ ký:</strong>
+                1. <b>Cách 1 (Khuyên dùng cho Outlook Classic):</b> Bấm nút <b>"Cài đặt Outlook (1-Click .BAT)"</b> ở bên trái &gt; Nhấp đúp mở file vừa tải về. Hệ thống sẽ tự động tạo đủ bộ file chữ ký và thiết lập mặc định trong Outlook.<br><br>
+                2. <b>Cách 2 (Cho Webmail / New Outlook / Mac):</b> Bấm nút <b>"Sao Chép Chữ Ký"</b> ở trên &gt; Mở phần Cài đặt chữ ký trong email và nhấn <b>Ctrl + V</b> để dán.
             </div>
         </div>
     </div>
 
     <div class="toast" id="toast"></div>
 
-    <!-- POPUP DONATE IT -->
+    <!-- POPUP DONATE IT (Đang ẩn theo yêu cầu) -->
     <div id="donateModal" class="modal-overlay" style="display: none;">
         <div class="modal-card">
-            <!-- BƯỚC 1: HỎI Ý KIẾN -->
             <div id="donateStep1">
                 <h3 style="font-size: 17px; font-weight: 700; color: #2d3748; margin-bottom: 14px;">Ủng hộ nhân viên IT</h3>
                 <p style="font-size: 14.5px; color: #4a5568; line-height: 1.6; margin-bottom: 24px;">
                     Tích tiểu thành đại, bạn có muốn ủng hộ nhân viên IT không?
                 </p>
                 <div style="display: flex; gap: 12px; justify-content: center;">
-                    <button type="button" class="btn btn-primary" onclick="showDonateQR()" style="padding: 10px 24px; font-size: 14px;">
-                        Có(Recommend)
+                    <button type="button" class="btn btn-primary" onclick="showDonateQR()" style="padding: 10px 24px; font-size: 14px; min-width: auto;">
+                        Có
                     </button>
-                    <button type="button" class="btn btn-secondary" onclick="closeDonateModal()" style="padding: 10px 24px; font-size: 14px;">
+                    <button type="button" class="btn btn-secondary" onclick="closeDonateModal()" style="padding: 10px 24px; font-size: 14px; min-width: auto;">
                         Không
                     </button>
                 </div>
             </div>
 
-            <!-- BƯỚC 2: HIỆN MÃ QR -->
             <div id="donateStep2" style="display: none;">
-                <h3 style="font-size: 18px; font-weight: 700; color: #2b1b10; margin-bottom: 8px;">Sơn thủy hữu tương phùng,Cảm ơn đại thiện nhân &lt;3</h3>
+                <h3 style="font-size: 18px; font-weight: 700; color: #2b1b10; margin-bottom: 8px;">Cảm ơn bạn rất nhiều!</h3>
                 <p style="font-size: 13px; color: #718096; margin-bottom: 14px;">Vietcombank - LAM HOANG SON - 9899901359</p>
                 <div style="background: #fff; padding: 4px; border-radius: 12px; display: inline-block; box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-bottom: 16px;">
                     <img src="qr-donate.jpg" alt="Mã QR Vietcombank" style="max-width: 100%; max-height: 380px; border-radius: 8px; display: block;">
                 </div>
                 <div>
-                    <button type="button" class="btn btn-secondary" onclick="closeDonateModal()" style="padding: 8px 24px; font-size: 13.5px; width: 100%;">
+                    <button type="button" class="btn btn-secondary" onclick="closeDonateModal()" style="padding: 8px 24px; font-size: 13.5px; width: 100%; min-width: auto;">
                         Đóng
                     </button>
                 </div>
@@ -438,7 +446,10 @@
         const form = document.getElementById('signatureForm');
         const previewBox = document.getElementById('signaturePreview');
         const toastEl = document.getElementById('toast');
+        const posVnInput = document.getElementById('position_vn');
+        const posEnInput = document.getElementById('position_en');
 
+                const DEFAULT_LOGO_BASE64 = "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";
         const STORAGE_KEY = 'bilco_signature_profile_v1';
 
         const DEFAULT_CONFIG = {
@@ -456,6 +467,262 @@
             email: "linhtk@bilco.com.vn",
             logo_url: "https://cdn1.vieclam24h.vn/tvn/asset/home/img/employer/5789a286cf842_1468637830.png"
         };
+
+        // BỘ TỪ ĐIỂN CHỨC DANH DOANH NGHIỆP SONG NGỮ VIỆT - ANH CHUẨN
+        const POSITION_DICTIONARY = {
+            // Ban Giám Đốc & Điều Hành
+            "tong giam doc": "General Director",
+            "pho tong giam doc": "Deputy General Director",
+            "giam doc dieu hanh": "Chief Operating Officer",
+            "giam doc": "Director",
+            "pho giam doc": "Deputy Director",
+            "chu tich hoi dong quan tri": "Chairman of the Board",
+            "pho chu tich": "Vice Chairman",
+            "thanh vien hoi dong quan tri": "Board Member",
+            "tro ly giam doc": "Executive Assistant",
+            "thu ky giam doc": "Secretary to the Director",
+            "thu ky tong giam doc": "Secretary to the General Director",
+
+            // Khối Quản Lý Cấp Cao (C-Level)
+            "giam doc ky thuat": "Chief Technology Officer",
+            "giam doc cong nghe": "Chief Technology Officer",
+            "giam doc tai chinh": "Chief Financial Officer",
+            "giam doc nhan su": "Chief Human Resources Officer",
+            "giam doc kinh doanh": "Chief Commercial Officer",
+            "giam doc marketing": "Chief Marketing Officer",
+            "giam doc van hanh": "Chief Operating Officer",
+            "giam doc san xuat": "Production Director",
+            "giam doc du an": "Project Director",
+            "giam doc chi nhanh": "Branch Director",
+
+            // Cung Ứng & Mua Hàng & Chuỗi Cung Ứng (Bilco)
+            "truong phong cung ung": "Head of Procurement",
+            "pho phong cung ung": "Deputy Head of Procurement",
+            "truong phong mua hang": "Purchasing Manager",
+            "pho phong mua hang": "Deputy Purchasing Manager",
+            "nhan vien cung ung": "Procurement Officer",
+            "nhan vien mua hang": "Purchasing Officer",
+            "chuyen vien cung ung": "Procurement Specialist",
+            "chuyen vien mua hang": "Purchasing Specialist",
+            "truong phong quan ly chuoi cung ung": "Supply Chain Manager",
+            "nhan vien chuoi cung ung": "Supply Chain Officer",
+            "chuyen vien chuoi cung ung": "Supply Chain Specialist",
+
+            // Kế Toán & Tài Chính
+            "ke toan truong": "Chief Accountant",
+            "pho phong ke toan": "Deputy Accounting Manager",
+            "truong phong ke toan": "Accounting Manager",
+            "truong phong tai chinh": "Finance Manager",
+            "ke toan tong hop": "General Accountant",
+            "ke toan thue": "Tax Accountant",
+            "ke toan cong no": "Accounts Receivable/Payable Accountant",
+            "ke toan kho": "Inventory Accountant",
+            "ke toan thanh toan": "Payment Accountant",
+            "ke toan ban hang": "Sales Accountant",
+            "nhan vien ke toan": "Accountant",
+            "thu quy": "Treasurer",
+            "chuyen vien tai chinh": "Financial Analyst",
+
+            // Hành Chính & Nhân Sự
+            "truong phong hanh chinh nhan su": "HR & Admin Manager",
+            "pho phong hanh chinh nhan su": "Deputy HR & Admin Manager",
+            "truong phong nhan su": "Human Resources Manager",
+            "pho phong nhan su": "Deputy HR Manager",
+            "truong phong hanh chinh": "Administration Manager",
+            "pho phong hanh chinh": "Deputy Admin Manager",
+            "chuyen vien nhan su": "HR Specialist",
+            "chuyen vien tuyen dung": "Recruitment Specialist",
+            "chuyen vien c&b": "C&B Specialist",
+            "chuyen vien dao tao": "Training Specialist",
+            "nhan vien hanh chinh": "Administrative Staff",
+            "nhan vien nhan su": "HR Officer",
+            "le tan": "Receptionist",
+
+            // Kinh Doanh, Bán Hàng & Chăm Sóc Khách Hàng
+            "truong phong kinh doanh": "Sales Manager",
+            "pho phong kinh doanh": "Deputy Sales Manager",
+            "truong phong ban hang": "Sales Manager",
+            "truong phong phat trien kinh doanh": "Business Development Manager",
+            "nhan vien kinh doanh": "Sales Executive",
+            "chuyen vien kinh doanh": "Sales Specialist",
+            "nhan vien ban hang": "Sales Representative",
+            "truong nhom kinh doanh": "Sales Team Leader",
+            "truong phong cham soc khach hang": "Customer Service Manager",
+            "nhan vien cham soc khach hang": "Customer Service Representative",
+            "nhan vien cskh": "Customer Service Representative",
+            "nhan vien tu van": "Consultant",
+
+            // Marketing & Truyền Thông
+            "truong phong marketing": "Marketing Manager",
+            "pho phong marketing": "Deputy Marketing Manager",
+            "truong phong truyen thong": "Communications Manager",
+            "chuyen vien marketing": "Marketing Specialist",
+            "nhan vien marketing": "Marketing Executive",
+            "chuyen vien truyen thong": "Communications Specialist",
+            "nhan vien content": "Content Creator",
+            "chuyen vien seo": "SEO Specialist",
+            "thiet ke do hoa": "Graphic Designer",
+
+            // Kỹ Thuật, CNTT & Sản Xuất
+            "truong phong ky thuat": "Technical Manager",
+            "pho phong ky thuat": "Deputy Technical Manager",
+            "ky su ky thuat": "Technical Engineer",
+            "ky su co khi": "Mechanical Engineer",
+            "ky su dien": "Electrical Engineer",
+            "ky su tu dong hoa": "Automation Engineer",
+            "ky su cong nghe thong tin": "IT Engineer",
+            "ky su phan mem": "Software Engineer",
+            "truong phong it": "IT Manager",
+            "nhan vien it": "IT Support Officer",
+            "quan tri mang": "Network Administrator",
+            "truong phong san xuat": "Production Manager",
+            "quan doc san xuat": "Production Supervisor",
+            "quan ly chat luong": "Quality Assurance/Control Manager",
+            "chuyen vien qa": "QA Specialist",
+            "chuyen vien qc": "QC Specialist",
+            "nhan vien qa": "QA Officer",
+            "nhan vien qc": "QC Officer",
+
+            // Kho Vận, Logistics & Xuất Nhập Khẩu
+            "truong phong kho": "Warehouse Manager",
+            "thu kho": "Warehouse Keeper",
+            "nhan vien kho": "Warehouse Staff",
+            "truong phong logistics": "Logistics Manager",
+            "nhan vien logistics": "Logistics Coordinator",
+            "nhan vien xuat nhap khau": "Import - Export Specialist",
+            "truong phong xuat nhap khau": "Import - Export Manager",
+
+            // Xây Dựng & Quản Lý Dự Án
+            "chi huy truong": "Site Manager",
+            "chi huy pho": "Deputy Site Manager",
+            "giam sat cong trinh": "Site Supervisor",
+            "quan ly du an": "Project Manager",
+            "tro ly du an": "Project Assistant",
+
+            // Pháp Chế & Kiểm Toán
+            "truong phong phap che": "Legal Manager",
+            "chuyen vien phap che": "Legal Specialist",
+            "chuyen vien phap ly": "Legal Officer",
+            "chuyen vien kiem toan noi bo": "Internal Auditor"
+        };
+
+        // Chuẩn hóa chuỗi tiếng Việt xóa dấu, đưa về chữ thường
+        function normalizeVietnamese(str) {
+            if (!str) return '';
+            return str.toLowerCase()
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')
+                .replace(/đ/g, 'd')
+                .replace(/[^a-z0-9\s]/g, ' ')
+                .replace(/\s+/g, ' ')
+                .trim();
+        }
+
+        // Định dạng Title Case cho chuỗi tiếng Anh
+        function toTitleCase(str) {
+            if (!str) return '';
+            return str.replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
+        }
+
+        // Kiểm tra quy tắc tiền tố chức danh
+        function matchPrefixRule(norm) {
+            if (norm.startsWith('truong phong ')) {
+                const sub = norm.replace('truong phong ', '').trim();
+                return 'Head of ' + toTitleCase(sub);
+            }
+            if (norm.startsWith('pho phong ')) {
+                const sub = norm.replace('pho phong ', '').trim();
+                return 'Deputy Head of ' + toTitleCase(sub);
+            }
+            if (norm.startsWith('giam doc ')) {
+                const sub = norm.replace('giam doc ', '').trim();
+                return 'Director of ' + toTitleCase(sub);
+            }
+            if (norm.startsWith('pho giam doc ')) {
+                const sub = norm.replace('pho giam doc ', '').trim();
+                return 'Deputy Director of ' + toTitleCase(sub);
+            }
+            if (norm.startsWith('chuyen vien ')) {
+                const sub = norm.replace('chuyen vien ', '').trim();
+                return toTitleCase(sub) + ' Specialist';
+            }
+            if (norm.startsWith('nhan vien ')) {
+                const sub = norm.replace('nhan vien ', '').trim();
+                return toTitleCase(sub) + ' Officer';
+            }
+            if (norm.startsWith('ky su ')) {
+                const sub = norm.replace('ky su ', '').trim();
+                return toTitleCase(sub) + ' Engineer';
+            }
+            return null;
+        }
+
+        // Fallback gọi API dịch mở MyMemory khi từ không có trong từ điển
+        async function fetchOnlineTranslation(text) {
+            try {
+                const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=vi|en`;
+                const res = await fetch(url);
+                if (!res.ok) return null;
+                const data = await res.json();
+                if (data && data.responseData && data.responseData.translatedText) {
+                    const trans = data.responseData.translatedText.trim();
+                    if (trans && !trans.toUpperCase().startsWith('MYMEMORY WARNING')) {
+                        return toTitleCase(trans);
+                    }
+                }
+            } catch (err) {
+                // Fallback im lặng nếu offline hoặc API giới hạn
+            }
+            return null;
+        }
+
+        let userEditedEn = false;
+        let translateTimeout = null;
+
+        posEnInput.addEventListener('input', () => {
+            userEditedEn = posEnInput.value.trim().length > 0;
+        });
+
+        // Tự động dịch chức vụ khi người dùng nhập vào Chức vụ (Tiếng Việt)
+        posVnInput.addEventListener('input', () => {
+            const valVn = posVnInput.value.trim();
+            if (!valVn) {
+                if (!userEditedEn) {
+                    posEnInput.value = '';
+                    updateLivePreview();
+                }
+                return;
+            }
+
+            const norm = normalizeVietnamese(valVn);
+
+            // 1. Tra cứu trực tiếp trong từ điển nội bộ (0ms)
+            if (POSITION_DICTIONARY[norm]) {
+                posEnInput.value = POSITION_DICTIONARY[norm];
+                updateLivePreview();
+                return;
+            }
+
+            // 2. Tra cứu theo quy tắc tiền tố
+            const prefixResult = matchPrefixRule(norm);
+            if (prefixResult) {
+                posEnInput.value = prefixResult;
+                updateLivePreview();
+                return;
+            }
+
+            // 3. Fallback online dịch tự do có debounce 400ms
+            clearTimeout(translateTimeout);
+            translateTimeout = setTimeout(async () => {
+                if (valVn.length >= 3 && !userEditedEn) {
+                    const translated = await fetchOnlineTranslation(valVn);
+                    if (translated && !userEditedEn) {
+                        posEnInput.value = translated;
+                        updateLivePreview();
+                    }
+                }
+            }, 400);
+        });
 
         function cleanPhone(phone) {
             return (phone || '').replace(/[^\d+]/g, '');
@@ -557,6 +824,73 @@
 </div>`;
         }
 
+        // Tạo chuỗi Plain Text chuẩn cho file .txt của Outlook
+        function generatePlainTextSignature(data) {
+            const salutation = (data.salutation || DEFAULT_CONFIG.salutation).trim();
+            const name = (data.name || DEFAULT_CONFIG.name).trim().toUpperCase();
+            const title = (data.title || '').trim();
+            const titleClean = title ? (title.startsWith('(') ? title : `(${title})`) : '';
+            const fullName = titleClean ? `${name} ${titleClean}` : name;
+            const posVn = (data.position_vn || DEFAULT_CONFIG.position_vn).trim();
+            const posEn = (data.position_en || DEFAULT_CONFIG.position_en).trim();
+            const posLine = [posVn, posEn].filter(Boolean).join(' | ');
+            const compVn = (data.company_vn || DEFAULT_CONFIG.company_vn).trim();
+            const compEn = (data.company_en || DEFAULT_CONFIG.company_en).trim();
+            const compLine = [compVn, compEn].filter(Boolean).join(' | ');
+            const address = (data.address || DEFAULT_CONFIG.address).trim();
+            const website = (data.website || DEFAULT_CONFIG.website).trim();
+            const hotline = (data.hotline || DEFAULT_CONFIG.hotline).trim();
+            const mobile = (data.mobile || DEFAULT_CONFIG.mobile).trim();
+            const email = (data.email || DEFAULT_CONFIG.email).trim();
+
+            const lines = [];
+            if (salutation) {
+                lines.push(salutation);
+                lines.push('');
+            }
+            lines.push(fullName);
+            if (posLine) lines.push(posLine);
+            lines.push('--------------------------------------------------');
+            if (compLine) lines.push(compLine);
+            if (address) lines.push(`Địa chỉ/Address: ${address}`);
+            const contact1 = [];
+            if (website) contact1.push(`Website: ${website}`);
+            if (hotline) contact1.push(`Hotline: ${hotline}`);
+            if (contact1.length) lines.push(contact1.join(' | '));
+            const contact2 = [];
+            if (mobile) contact2.push(`Mobile: ${mobile}`);
+            if (email) contact2.push(`Email: ${email}`);
+            if (contact2.length) lines.push(contact2.join(' | '));
+
+            return lines.join('\r\n');
+        }
+
+        // Chuyển chuỗi Text sang cấu trúc Rich Text Format (.rtf) chuẩn escape Unicode
+        function stringToRtf(text) {
+            let rtf = '{\\rtf1\\ansi\\ansicpg1252\\deff0\\nouicompat\\deflang1033{\\fonttbl{\\f0\\fnil\\fcharset0 Times New Roman;}{\\f1\\fnil\\fcharset163 Times New Roman;}}\\viewkind4\\uc1 ';
+            for (let i = 0; i < text.length; i++) {
+                const code = text.charCodeAt(i);
+                if (code === 10) {
+                    rtf += '\\par ';
+                } else if (code === 13) {
+                    // skip
+                } else if (code === 92) {
+                    rtf += '\\\\';
+                } else if (code === 123) {
+                    rtf += '\\{';
+                } else if (code === 125) {
+                    rtf += '\\}';
+                } else if (code < 128) {
+                    rtf += text.charAt(i);
+                } else {
+                    const signedCode = code > 32767 ? code - 65536 : code;
+                    rtf += '\\u' + signedCode + '?';
+                }
+            }
+            rtf += '}';
+            return rtf;
+        }
+
         // Đọc dữ liệu từ form
         function getFormData() {
             const data = {};
@@ -606,6 +940,7 @@
         // Khôi phục mẫu mặc định
         function resetToDefault() {
             fillForm(DEFAULT_CONFIG);
+            userEditedEn = false;
             updateLivePreview();
             try {
                 localStorage.removeItem(STORAGE_KEY);
@@ -635,11 +970,6 @@
                 fallbackSelectCopy();
                 showToast('info', 'Đã sao chép! Mở Outlook và nhấn Ctrl + V để dán.');
             }
-
-            // Tạm thời ẩn popup donate theo yêu cầu
-            // setTimeout(() => {
-            //     openDonateModal();
-            // }, 500);
         }
 
         const donateModal = document.getElementById('donateModal');
@@ -679,19 +1009,229 @@
             selection.removeAllRanges();
         }
 
-        // Tải file .htm về máy
+        // Tải file .htm đơn lẻ về máy
         function downloadHtmlFile() {
-            const html = previewBox.innerHTML;
-            const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+            const innerHtml = previewBox.innerHTML;
+            const fullHtml = `<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="Generator" content="Bilco Signature Generator">
+<title>Bilco Signature</title>
+</head>
+<body style="font-family: 'Times New Roman', Times, serif; font-size: 13px; color: #333333; margin: 0; padding: 0;">
+${innerHtml}
+</body>
+</html>`;
+            const blob = new Blob([fullHtml], { type: 'text/html;charset=utf-8' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'chu-ky-bilco.htm';
+            a.download = 'Bilco_Signature.htm';
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
-            showToast('success', 'Đã tải xuống file chu-ky-bilco.htm');
+            showToast('success', 'Đã tải xuống file Bilco_Signature.htm');
+        }
+
+        // Hàm mã hóa chuỗi Unicode tiếng Việt sang Base64 UTF-8
+        function utf8ToBase64(str) {
+            const bytes = new TextEncoder().encode(str);
+            let binary = '';
+            const len = bytes.byteLength;
+            for (let i = 0; i < len; i++) {
+                binary += String.fromCharCode(bytes[i]);
+            }
+            return window.btoa(binary);
+        }
+
+        // Hàm mã hóa chuỗi ASCII sang Base64 UTF-16LE cho PowerShell -EncodedCommand
+        function asciiToUtf16LeBase64(str) {
+            const bytes = new Uint8Array(str.length * 2);
+            for (let i = 0; i < str.length; i++) {
+                const code = str.charCodeAt(i);
+                bytes[i * 2] = code & 0xff;
+                bytes[i * 2 + 1] = (code >> 8) & 0xff;
+            }
+            let binary = '';
+            for (let i = 0; bytes.length > 0 && i < bytes.length; i++) {
+                binary += String.fromCharCode(bytes[i]);
+            }
+            return window.btoa(binary);
+        }
+
+        // Tạo và tải file Cai_Dat_Chu_Ky_Bilco.bat (One-Click Setup Script v2 - Hướng A: Ảnh Cục Bộ)
+        function downloadOneClickInstaller() {
+            const data = getFormData();
+            
+            // HTML dành riêng cho Outlook Classic: trỏ logo vào thư mục local Bilco_Signature.files/image001.png
+            const dataLocal = Object.assign({}, data);
+            dataLocal.logo_url = "Bilco_Signature.files/image001.png";
+            const innerHtmlLocal = generateSignatureHTML(dataLocal);
+
+            const fullHtml = `<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="Generator" content="Bilco Signature Generator">
+<title>Bilco Signature</title>
+</head>
+<body style="font-family: 'Times New Roman', Times, serif; font-size: 13px; color: #333333; margin: 0; padding: 0;">
+${innerHtmlLocal}
+</body>
+</html>`;
+
+            const plainText = generatePlainTextSignature(data);
+            const rtfText = stringToRtf(plainText);
+
+            const b64Html = utf8ToBase64(fullHtml);
+            const b64Txt = utf8ToBase64(plainText);
+            const b64Rtf = utf8ToBase64(rtfText);
+            const userLogoUrl = data.logo_url || DEFAULT_CONFIG.logo_url;
+
+            const batContent = `<# : batch section
+@echo off
+chcp 65001 >nul
+title Cai Dat Chu Ky Email Bilco
+echo ========================================================
+echo     DANG CAI DAT CHU KY EMAIL BILCO CHO OUTLOOK
+echo ========================================================
+echo Dang thiet lap tap tin chu ky va cau hinh he thong...
+set "BAT_PATH=%~f0"
+powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "$p = $env:BAT_PATH; $s = [System.IO.File]::ReadAllText($p, [System.Text.Encoding]::UTF8); Invoke-Expression $s"
+exit /b 0
+#>
+$ErrorActionPreference = 'SilentlyContinue'
+
+$sigName = 'Bilco_Signature'
+$sigDir = Join-Path $env:APPDATA 'Microsoft/Signatures'
+if (!(Test-Path $sigDir)) {
+    New-Item -ItemType Directory -Path $sigDir -Force | Out-Null
+}
+
+$logFile = Join-Path $sigDir 'bilco_setup.log'
+$timeStr = Get-Date -Format 'yyyy-MM-dd HH:mm:ss'
+Add-Content -Path $logFile -Value "[$timeStr] === Bat dau cai dat chu ky Bilco (Huong A: Anh cuc bo) ==="
+
+Write-Host "-> Kiem tra tien trinh Outlook..." -ForegroundColor Cyan
+$isOlk = (Get-Process -Name 'olk' -ErrorAction SilentlyContinue) -ne $null
+$isOutlook = (Get-Process -Name 'outlook' -ErrorAction SilentlyContinue) -ne $null
+if ($isOlk) { Add-Content -Path $logFile -Value "[$timeStr] Phat hien New Outlook dang chay." }
+if ($isOutlook) { Add-Content -Path $logFile -Value "[$timeStr] Phat hien Classic Outlook dang chay." }
+
+# Sao luu chu ky cu neu da ton tai
+$backupDir = Join-Path $sigDir 'Backup_Bilco'
+$oldHtm = Join-Path $sigDir "$sigName.htm"
+if (Test-Path $oldHtm) {
+    if (!(Test-Path $backupDir)) { New-Item -ItemType Directory -Path $backupDir -Force | Out-Null }
+    Copy-Item -Path (Join-Path $sigDir "$sigName.*") -Destination $backupDir -Force -ErrorAction SilentlyContinue
+    Add-Content -Path $logFile -Value "[$timeStr] Da sao luu chu ky cu vao: $backupDir"
+}
+
+Write-Host "-> Dang tao thu muc .files va filelist.xml..." -ForegroundColor Cyan
+$filesFolder = Join-Path $sigDir "$sigName.files"
+if (!(Test-Path $filesFolder)) {
+    New-Item -ItemType Directory -Path $filesFolder -Force | Out-Null
+}
+$fileListXml = "<?xml version=""1.0"" encoding=""utf-8""?><xml xmlns:o=""urn:schemas-microsoft-com:office:office""><o:MainFile HRef=""../$sigName.htm""/><o:File HRef=""image001.png""/><o:File HRef=""filelist.xml""/></xml>"
+[System.IO.File]::WriteAllText((Join-Path $filesFolder 'filelist.xml'), $fileListXml, [System.Text.Encoding]::UTF8)
+
+Write-Host "-> Dang luu hinh anh logo cuc bo (image001.png)..." -ForegroundColor Cyan
+$logoFile = Join-Path $filesFolder 'image001.png'
+$logoDownloaded = $false
+$userUrl = "${userLogoUrl}"
+if ($userUrl -and $userUrl.StartsWith('http')) {
+    try {
+        [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+        $wc = New-Object System.Net.WebClient
+        $wc.Headers.Add('User-Agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)')
+        $wc.DownloadFile($userUrl, $logoFile)
+        if ((Test-Path $logoFile) -and ((Get-Item $logoFile).Length -gt 100)) {
+            $logoDownloaded = $true
+            Add-Content -Path $logFile -Value "[$timeStr] Da tai logo tu URL ve image001.png thanh cong."
+        }
+    } catch {}
+}
+if (!$logoDownloaded) {
+    $b64Logo = "${DEFAULT_LOGO_BASE64}"
+    [System.IO.File]::WriteAllBytes($logoFile, [System.Convert]::FromBase64String($b64Logo))
+    Add-Content -Path $logFile -Value "[$timeStr] Da ghi logo image001.png tu Base64 du phong."
+}
+
+Write-Host "-> Dang tao tap tin Bilco_Signature.htm (UTF-8, tro anh cuc bo)..." -ForegroundColor Cyan
+$htmBytes = [System.Convert]::FromBase64String("${b64Html}")
+[System.IO.File]::WriteAllBytes((Join-Path $sigDir "$sigName.htm"), $htmBytes)
+
+Write-Host "-> Dang tao tap tin Bilco_Signature.txt (UTF-16 LE)..." -ForegroundColor Cyan
+$txtUtf8Bytes = [System.Convert]::FromBase64String("${b64Txt}")
+$txtStr = [System.Text.Encoding]::UTF8.GetString($txtUtf8Bytes)
+[System.IO.File]::WriteAllText((Join-Path $sigDir "$sigName.txt"), $txtStr, [System.Text.Encoding]::Unicode)
+
+Write-Host "-> Dang tao tap tin Bilco_Signature.rtf..." -ForegroundColor Cyan
+$rtfBytes = [System.Convert]::FromBase64String("${b64Rtf}")
+[System.IO.File]::WriteAllBytes((Join-Path $sigDir "$sigName.rtf"), $rtfBytes)
+
+Write-Host "-> Dang cau hinh Registry tat Roaming Signatures & gan mac dinh..." -ForegroundColor Cyan
+$setupRegs = @(
+    'HKCU:/Software/Microsoft/Office/16.0/Outlook/Setup',
+    'HKCU:/Software/Microsoft/Office/15.0/Outlook/Setup'
+)
+foreach ($r in $setupRegs) {
+    try {
+        if (!(Test-Path $r)) { New-Item -Path $r -Force | Out-Null }
+        Set-ItemProperty -Path $r -Name 'DisableRoamingSignaturesTemporaryToggle' -Value 1 -Type DWord -Force
+        Add-Content -Path $logFile -Value "[$timeStr] DisableRoamingSignaturesTemporaryToggle=1 tai $r"
+    } catch {}
+}
+
+$mailRegs = @(
+    'HKCU:/Software/Microsoft/Office/16.0/Common/MailSettings',
+    'HKCU:/Software/Microsoft/Office/15.0/Common/MailSettings'
+)
+foreach ($r in $mailRegs) {
+    try {
+        if (!(Test-Path $r)) { New-Item -Path $r -Force | Out-Null }
+        Set-ItemProperty -Path $r -Name 'NewSignature' -Value $sigName -Type String -Force
+        Set-ItemProperty -Path $r -Name 'ReplySignature' -Value $sigName -Type String -Force
+        Add-Content -Path $logFile -Value "[$timeStr] NewSignature & ReplySignature=$sigName tai $r"
+    } catch {}
+}
+
+Add-Content -Path $logFile -Value "[$timeStr] Hoan tat cai dat chu ky thanh cong."
+Write-Host "-> Cai dat hoan tat 100%!" -ForegroundColor Green
+
+Add-Type -AssemblyName System.Windows.Forms
+$msg = 'Cai dat chu ky email Bilco thanh cong!
+
+Chu ky da duoc thiet lap mac dinh cho Thu moi va Thu tra loi tren Outlook.'
+if ($isOlk) {
+    $msg += '
+
+Luu y: Phat hien ban dang mo New Outlook. New Outlook khong ho tro doc chu ky tu thu muc local. Vui long chuyen sang Outlook Classic hoac dung nut Sao Chep Chu Ky tren website de dan vao New Outlook.'
+} elseif ($isOutlook) {
+    $msg += '
+
+Luu y: Outlook dang mo. Vui long dong Outlook va mo lai de chu ky moi duoc ap dung ngay.'
+} else {
+    $msg += '
+
+Ban co the mo Outlook de su dung ngay bay gio.'
+}
+
+[System.Windows.Forms.MessageBox]::Show($msg, 'Cai Dat Chu Ky Bilco', [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Information)
+`;
+
+            const blob = new Blob([batContent], { type: 'application/x-bat' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'Cai_Dat_Chu_Ky_Bilco.bat';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showToast('success', 'Đã tải xuống Cai_Dat_Chu_Ky_Bilco.bat! Nhấp đúp vào file để cài đặt.');
         }
 
         function showToast(type, text) {
@@ -700,7 +1240,7 @@
             toastEl.style.display = 'block';
             setTimeout(() => {
                 toastEl.style.display = 'none';
-            }, 4000);
+            }, 4500);
         }
 
         // Tải dữ liệu ban đầu
